@@ -15,9 +15,9 @@ animal.farm_id,
 animal.id Animal_id,
 animal.tag_id,
 animal.original_tag_id,
-animal.sire_tag_id,
+sire.tag_id sire_tag_id,
 animal.sire_id,
-animal.dam_tag_id,
+dam.tag_id dam_tag_id,
 animal.dam_id,
 sex.label sex,
 animal.sex as sex_id,
@@ -30,6 +30,8 @@ farm.latitude,
 @uuid
 FROM 
  adgg_uat.core_animal animal 
+ LEFT JOIN adgg_uat.core_animal sire on animal.sire_id = sire.id
+ LEFT JOIN adgg_uat.core_animal dam on animal.dam_id = dam.id
  JOIN adgg_uat.core_farm  farm ON animal.farm_id = farm.id
  LEFT JOIN adgg_uat.country_units region ON farm.region_id = region.id 
  LEFT JOIN adgg_uat.country_units district ON farm.district_id = district.id 

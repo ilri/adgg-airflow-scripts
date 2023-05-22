@@ -32,7 +32,7 @@ FROM
  adgg_uat.core_animal animal 
  LEFT JOIN adgg_uat.core_animal sire on animal.sire_id = sire.id
  LEFT JOIN adgg_uat.core_animal dam on animal.dam_id = dam.id
- JOIN adgg_uat.core_farm  farm ON animal.farm_id = farm.id
+ LEFT JOIN adgg_uat.core_farm  farm ON animal.farm_id = farm.id
  LEFT JOIN adgg_uat.country_units region ON farm.region_id = region.id 
  LEFT JOIN adgg_uat.country_units district ON farm.district_id = district.id 
  LEFT JOIN adgg_uat.country_units ward ON farm.ward_id = ward.id 

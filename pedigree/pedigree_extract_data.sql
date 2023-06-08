@@ -2,7 +2,7 @@ SET @uuid = '{{ params.uuid }}';
 SET @country = {{ params.country}};
 
 
-INSERT INTO reports.staging_pedigree_data (country_id, country, region, district, ward, village, farmer_name, farm_id, animal_id, tag_id, original_tag_id, sire_tag_id, sire_id, dam_tag_id, dam_id, sex, sex_id, reg_date, birthdate, main_breed, breed, longitude, latitude, uuid) 
+INSERT INTO reports.staging_pedigree_data (country_id, country, region, district, ward, village, farmer_name, farm_id, animal_id, tag_id, original_tag_id, sire_tag_id, sire_id, dam_tag_id, dam_id, sex, sex_id, reg_date, birthdate, main_breed, breed, longitude, latitude,sire_birthdate,dam_birthdate, uuid) 
 SELECT
 farm.country_id,
 country.name country,
@@ -27,6 +27,8 @@ animal.main_breed,
 breed.label breed,
 farm.longitude,
 farm.latitude,
+sire.birthdate,
+dam.birthdate,
 @uuid
 FROM 
  adgg_uat.core_animal animal 
